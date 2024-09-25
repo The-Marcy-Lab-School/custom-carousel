@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useCarousel } from "../hooks/useCarousel";
 
 export const Carousel = ({ data }) => {
-  const { carouselData, carouselIdx, handleNext, handlePrev } =
-    useCarousel(data);
+  const { carouselData, carouselIdx, handleNext, handlePrev } = useCarousel(data);
   const time = 8;
   const [timer, setTimer] = useState(time);
 
