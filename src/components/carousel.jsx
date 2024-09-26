@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCarousel } from "../hooks/useCarousel";
 
 export const Carousel = ({ data }) => {
-  const { carouselData, carouselIdx, handleNext, handlePrev } = useCarousel(data);
+  const { curItem, size, pos, handleNext, handlePrev } = useCarousel(data);
   const time = 8;
   const [timer, setTimer] = useState(time);
 
@@ -18,12 +18,12 @@ export const Carousel = ({ data }) => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
+  
   return (
     <>
       <div style={{ height: "400px", width: "600px" }}>
         <img
-          src={carouselData[carouselIdx]}
+          src={curItem}
           style={{
             width: "100%",
             height: "100%",
@@ -48,15 +48,15 @@ export const Carousel = ({ data }) => {
           marginTop: 16,
         }}
       >
-        {carouselData.map((_, idx) => (
-          <li key={idx + 1}>
+        {Array.from({ length: size }).map((_, idx) => (
+          <li key={idx}>
             <div
               style={{
                 backgroundColor: "white",
                 height: "7px",
                 width: "7px",
                 borderRadius: "50%",
-                opacity: carouselIdx === idx ? 1 : 0.5,
+                opacity: pos === idx ? 1 : 0.5,
               }}
             />
           </li>

@@ -9,5 +9,11 @@ export const useCarousel = (data) => {
 
   const handlePrev = () => setCarouselIdx((prev) => handleBoundary(prev - 1));
 
-  return { carouselData: data, carouselIdx, handleNext, handlePrev };
+  return {
+    curItem: data[carouselIdx],
+    size: data.length,
+    pos: carouselIdx,
+    handleNext,
+    handlePrev,
+  };
 };
