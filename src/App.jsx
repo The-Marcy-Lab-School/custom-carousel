@@ -21,7 +21,7 @@ const partData = [
     tasks: [
       "Create `useCarousel` hook to manage carousel state",
       "Refactor the Carousel component to use the hook",
-      "Test the reusability of the hook to ensure it functions independently from the Carousel component and can be easily reused in other instances",
+      "Test the reusability of the hook",
     ],
   },
   {
@@ -34,7 +34,7 @@ const partData = [
     title: "Part 4: Polish & Stretch",
     tasks: [
       "Show progress bar for image timing",
-      "Clicking on a 'dot/step' jumps the carousel to that image",
+      "Clicking on a `dot/step` jumps the carousel to that image",
     ],
   }
 ];

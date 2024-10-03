@@ -3,23 +3,22 @@ import { CarouselImage } from "./carousel-image";
 import { PaginationCarouselDots } from "./pagination-carousel";
 import { SlideProgress } from "./slide-progress";
 
-export const Carousel = ({ images }) => {
+export const Carousel = ({ images, slideTime = 10 }) => {
   const {
     curImage,
     size,
     pos,
+    slideProgress,
     handleNext,
     handlePrev,
-    timeToNextSlide,
-    slideTime,
     setCarouselIdx
-  } = useCarousel(images);
+  } = useCarousel(images, slideTime);
 
   return (
     <>
       <div style={{ height: "400px" }}>
         <CarouselImage curImage={curImage} />
-        <SlideProgress timeToNextSlide={timeToNextSlide} slideTime={slideTime}/>
+        <SlideProgress slideProgress={slideProgress}/>
       </div>
       <PaginationCarouselDots pos={pos} size={size} setCarouselIdx={setCarouselIdx} />
       <div style={{ display: "flex", justifyContent: "space-between", gap: "5px" }}>

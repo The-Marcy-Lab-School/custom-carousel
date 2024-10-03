@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useSlideshow } from "./useSlideshow";
 
-export const useCarousel = arrOfImages => {
+export const useCarousel = (arrOfImages, slideTime = 10) => {
   const [carouselIdx, setCarouselIdx] = useState(0);
 
   const handleBoundary = (idxNum) => (idxNum + arrOfImages.length) % arrOfImages.length;
   const moveCarousel = (amount) => setCarouselIdx(prevIdx => handleBoundary(prevIdx + amount))
 
-  const handleNext = () => moveCarousel(1);
-  const handlePrev = () => moveCarousel(-1);
+  const handleNext = useCallback(() => moveCarousel(1), [moveCarousel]);
+  const handlePrev = useCallback(() => moveCarousel(-1), [moveCarousel]);
 
-  const { timeToNextSlide, slideTime } = useSlideshow(handleNext)
+  const { slideProgress } = useSlideshow(handleNext, slideTime)
 
   return {
     curImage: arrOfImages[carouselIdx],
@@ -18,8 +18,7 @@ export const useCarousel = arrOfImages => {
     pos: carouselIdx,
     handleNext,
     handlePrev,
-    timeToNextSlide,
-    slideTime,
-    setCarouselIdx
+    setCarouselIdx,
+    slideProgress
   };
 };

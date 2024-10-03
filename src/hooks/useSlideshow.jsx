@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-export const useSlideshow = (handleNext) => {
-  const slideTime = 10;
+export const useSlideshow = (handleNext, slideTime) => {
   const [timeToNextSlide, setTimeToNextSlide] = useState(slideTime);
-
-  const updateSlideTime = () => {
-    setTimeToNextSlide(prevTime => {
-      if (prevTime === 0) {
-        handleNext();
-        return slideTime;
-      }
-      return prevTime - 1;
-    });
-  };
+  const slideProgress = (timeToNextSlide / slideTime) * 100;
 
   useEffect(() => {
-    const slideShowInterval = setInterval(updateSlideTime, 1000);
-    return () => clearInterval(slideShowInterval);
-  }, []);
+    const slideshowInterval = setInterval(() => {
+      setTimeToNextSlide((prevTime) => {
+        if (prevTime <= 1) {
+          handleNext();
+          return slideTime;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
 
-  return { timeToNextSlide, slideTime };
+    return () => clearInterval(slideshowInterval);
+  }, [slideTime]); // can add `handleNext` to pause on click
+
+  return { slideProgress };
 };
