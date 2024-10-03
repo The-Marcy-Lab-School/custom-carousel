@@ -7,7 +7,6 @@ const carouselImages = [
   "https://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg",
 ];
 
-// Part data for the checkboxes
 const partData = [
   {
     title: "Part 1: Develop a functional carousel that can",
@@ -29,7 +28,6 @@ const partData = [
     title: "Part 3: Slideshow",
     tasks: [
       "Automatically move to the next image after a set interval",
-      "Show progress bar for image timing",
     ],
   },
   {
