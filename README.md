@@ -1,3 +1,3 @@
-# Custom Carousel 🎠
+# Zo's Custom Carousel Solution 🎠
 
-### [Deployed Link](https://carousel-519718692451.us-central1.run.app/)
+### [Live Demo](https://carousel-519718692451.us-central1.run.app/)
